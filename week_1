@@ -1,0 +1,140 @@
+1-
+class Solution:
+    def busyStudent(self, startTime: List[int], endTime: List[int], queryTime: int) -> int:
+        count=0
+        for i,y in zip(startTime,endTime):
+            if i<=queryTime<=y :
+                count+=1
+        return count
+__________________________________        
+2-
+class Solution:
+    def maximumWealth(self, accounts: List[List[int]]) -> int:
+        return max(sum(i) for i in accounts)
+__________________________________
+3-
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        l=sorted(nums)
+        return (l[-1]-1)*(l[-2]-1)
+__________________________________
+6-
+from collections import Counter
+class Solution:
+    def findLucky(self, arr: List[int]) -> int:
+        x=Counter(arr)
+        k=[i for i,y in x.items() if i==y]
+        return max(k) if k else -1
+__________________________________
+7-
+class Solution:
+    def minTimeToVisitAllPoints(self, p: List[List[int]]) -> int:
+        m=0
+        c=[]
+        for i in range(1,len(p)):
+            m=max(abs(p[i-1][0] - p[i][0]), abs(p[i-1][1] - p[i][1]))
+            c.append(m)
+        return(sum(c))
+__________________________________
+8-
+class Solution:
+    def sumOddLengthSubarrays(self, arr) -> int:
+        sm=0
+        for i in range(len(arr),0,-2 ):
+            for j in range(0,len(arr)-i+1):
+                sm+=sum(arr[j:i+j])
+        return sm 
+__________________________________
+9-
+class Solution:
+    def transpose( self,x) :
+       
+        return [[x[i][j] for i in range(len(x))] for j in range(len(x[0]))]       
+print(Solution().transpose([[1,2,3],[4,5,6]]))
+
+__________________________________
+10-class Solution:
+    def runningSum(self, nums) -> List[int]:
+        sum=0
+        for i in range(len(nums)):
+            sum=nums[i]+sum
+            nums[i]=sum
+        return  nums 
+ 
+__________________________________
+11-class Solution:
+    def decompressRLElist(self, nums: List[int]) -> List[int]:
+        v=[]
+        for i in range(0,len(nums),2):
+            c,y=nums[i],nums[i+1]
+            v.extend([y]*c)
+        return v
+
+__________________________________
+12-
+class Solution:
+    def countMatches(self,  items, ruleKey, ruleValue):
+        sum=0
+       
+        for i in items:
+            if ruleKey =="color" and ruleValue == i[1]:
+                sum+=1
+            if ruleKey =="type" and ruleValue == i[0]:
+                sum+=1
+            if ruleKey =="name" and ruleValue == i[2]:
+                sum+=1        
+        return sum
+__________________________________
+13-
+class Solution:
+    def largestAltitude(self, gain: List[int]) -> int:
+        
+        newm=[0]*(len(gain)+1)
+        for i in range(len(gain)):
+            newm[i+1]=gain[i]+newm[i]
+__________________________________            
+14-
+class Solution:
+    def oddCells(self, m: int, n: int, indices: List[List[int]]) -> int:
+        x=[]
+        count=0
+        for i in range(m):
+            x.append([0]*n)
+        for i in range(len(indices)):
+            for j in range(n):
+                x[indices[i][0]][j]+=1
+            for j in range(m):
+                x[j][indices[i][1]]+=1
+        
+        for i in range(m):
+            for j in range(n):
+                if x[i][j] % 2 != 0:
+                    count +=1
+        return count
+__________________________________
+15-
+class Solution:
+    def diagonalSum(self, mat: List[List[int]]) -> int:
+        sim=0
+        size=len(mat)
+        for i in range(size):
+            x=mat[i][i]+mat[i][(size-1)-i]
+            sim+=x   
+        if(size & 1):
+            sim-=mat[size//2][size//2]
+        return sim
+__________________________________ 
+16-
+class Solution:
+    def minimumAbsDifference(self, arr: List[int]) -> List[List[int]]:
+        x=sorted(arr)
+        c=[]
+        dif=10E7
+        for i in range(len(arr)-1):
+            dif=min(abs(x[i]-x[i+1]),dif)
+        for i in range(len(arr)-1):
+            if abs(x[i]-x[i+1])==dif:
+                c.append([x[i],x[i+1]])
+        return c
+
+            
