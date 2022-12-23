@@ -22,3 +22,91 @@ class Solution:
             if complement in numMap:
                 return [numMap[complement], i]
             numMap[nums[i]] = i
+        _____________________________
+ 3-
+ class Solution(object):
+    def containsNearbyDuplicate(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: bool
+        """
+        if len(list(set(nums))) == len(nums):return False
+        for i in range(len(nums)):
+            for j in range(i+1,len(nums)):
+                if nums[i]==nums[j] and abs(i-j)<=k:
+                    return True
+                
+
+        return False
+          _____________________________
+4-
+ class Solution:
+    def findRestaurant(self, list1: List[str], list2: List[str]) -> List[str]:
+        x=len(list1)+len(list2)
+        l=[]
+        for i in range(len(list1)):
+            if list1[i] in list2:
+                curSum = i+list2.index(list1[i])
+                if curSum<x:
+                    
+                    l = [list1[i]]
+                    x = curSum
+                elif curSum == x:
+                    l.append(list1[i])
+        return(l)        
+         _____________________________
+5-
+class Solution:
+    def findWords(self, words: List[str]) -> List[str]:
+        output=[]
+       
+        for i in words:
+            if re.match("[qwertyuiop]+$",i.lower()) or re.match("[asdfghjkl]+$",i.lower()) orre.match("[zxcvbnm]+$",i.lower()):
+                output.append(i)
+
+        return output
+        _____________________________
+ 6-
+class Solution:
+    def repeatedNTimes(self, nums: List[int]) -> int:
+        from collections import Counter
+        
+          _____________________________
+ 7-
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        mem =set()
+        while n!=1:
+            n=sum([int(x)**2 for x in str(n) ])
+        
+            if n in mem:
+                return(False)
+            else:
+                mem.add(n)    
+
+        else:
+           return True
+
+          _____________________________
+ 8-
+ class Solution:
+    def uncommonFromSentences(self, s1: str, s2: str) -> List[str]:
+        dct = Counter(s1.split(' ') + s2.split(' '))
+        return([i for i,y in dct.items() if y ==1  ])
+          _____________________________
+ 9-
+ class Solution:
+    def romanToInt(self, s) -> int:
+        hash={'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000}
+        
+       
+        count=0        
+        for i in range(len(s)):
+            if s[i] in hash:
+                count+=hash[s[i]]
+        for j in range(len(s)-1):
+            if hash[s[j]] <hash[s[j+1]]:
+                count-=2*hash[s[j]]
+            
+        return(count)        
