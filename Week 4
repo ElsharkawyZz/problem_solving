@@ -1,0 +1,75 @@
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        f = str (x)
+        i = 0
+        j = len(f)-1
+        while i <=j :
+            if f[ i] != f[j]:
+                return False
+            i+=1
+            j-=1
+        return True    
+        
+        
+class Solution:
+    def plusOne(self, digits) :
+        x = ''
+        for i in digits:
+            x+= str(i)
+            
+        return [int(i) for i in str(int(x)+1) ]        
+        
+        
+  class Solution:
+    def climbStairs(self, n: int) -> int:
+        res = [1,1]
+        x = 0
+        for i in range(2,n+1):
+            res.append(res[i-1]+res [i-2])
+            
+
+        
+        return res[n]
+
+import math
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        
+        return (math.log2(n)%2 == 0 or math.log2(n)%2==1) if n > 0 else False
+
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        mem =set()
+        while n!=1:
+            n=sum([int(x)**2 for x in str(n) ])
+        
+            if n in mem:
+                return(False)
+            else:
+                mem.add(n)    
+
+        else:
+           return True
+
+
+class Solution:
+    def sumBase(self, n: int, k: int) -> int:
+        sums = 0
+        while n>0:
+            sums = sums + n % k 
+            n = n//k
+
+
+        return sums
+
+
+class Solution:
+    def fib(self, n: int) -> int:
+        if n==0 or n==1:
+            return n
+        return self.fib(n-1)+ self.fib(n-2)   
+        
+      
+class Solution:
+    def divisorGame(self, n: int) -> bool:
+        return n%2 ==0          
